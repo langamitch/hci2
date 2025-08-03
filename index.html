@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Creative Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* 1. Global Styles & Variables */
+        :root {
+            --bg-color: #111010;
+            --text-color: #e8eaed;
+            --text-color-secondary: #bdc1c6;
+            --card-yellow: #fdd663;
+            --card-blue: #5c9ce5;
+            --card-dark-blue: #344154;
+            --card-purple: #c5a5e8;
+            --card-text-color: #202124;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Google Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a {
+            color: var(--text-color-secondary);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* 2. Main Layout Container */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        main.container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* 3. Header Styling */
+        header {
+            padding: 24px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-left {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .sign-in-btn {
+            background-color: #8ab4f8;
+            color: #202124;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+        
+        .sign-in-btn:hover {
+            background-color: #a3c5f9;
+        }
+
+        /* 4. Hero Section Typography */
+        .hero-text {
+            margin-bottom: 48px;
+        }
+
+        .hero-text h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .hero-text p {
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: var(--text-color-secondary);
+        }
+
+        /* 5. Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            width: 100%;
+        }
+
+        .card {
+            padding: 24px;
+            border-radius: 6px;
+            text-align: left;
+            color: var(--card-text-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 250px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        .card h2 {
+            font-size: 2rem;
+            font-weight: 500;
+        }
+        
+        .card p {
+            margin-top: 8px;
+            font-size: 1rem;
+        }
+
+        .launch-btn {
+            background-color: rgba(0, 0, 0, 0.1);
+            color: var(--card-text-color);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            align-self: flex-start;
+            margin-top: 24px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .launch-btn:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Individual Card Colors & Styles */
+        .card.yellow { background-color: var(--card-yellow); }
+        .card.blue { background-color: var(--card-blue); }
+        .card.dark-blue {
+            background-color: var(--card-dark-blue);
+            color: var(--text-color);
+          
+            background-position: 110% -20px;
+        }
+        .card.dark-blue .launch-btn {
+            color: var(--text-color);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        .card.purple { background-color: var(--card-purple); }
+
+
+        /* 6. Footer Styling */
+        footer {
+            padding: 24px 0;
+            margin-top: 88px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+        
+        /* 7. Responsive Design for smaller screens */
+        @media (max-width: 992px) {
+            .hero-text h1 { font-size: 3rem; }
+            .hero-text p { font-size: 1.5rem; }
+            .card-grid { grid-template-columns: 1fr; }
+        }
+        
+        @media (max-width: 768px) {
+            nav { flex-direction: row; gap: 16px; margin-bottom: 70px;position: fixed; justify-content: space-between;width: 90vw; }
+            .hero-text h1 { font-size: 2.5rem;margin-top: 60px; }
+            .hero-text p { font-size: 1.25rem; }
+            .footer-content { flex-direction: column; gap: 16px; }
+        }
+        /* Overlay styles */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.overlay-content {
+    background: white;
+    padding: 30px;
+    color: black;
+    border-radius: 6px;
+    text-align: center;
+    max-width: 500px;
+    width: 95%;
+
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+.profile{
+    display: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+}
+.profile h1{
+    font-size: 13px;
+}
+
+
+    </style>
+</head>
+<body>
+
+    <header class="container">
+        <nav>
+            <div class="nav-left">
+                <strong>EDUTEND</strong>
+            </div>
+            <div class="nav-right">
+<a href="#">
+    <svg xmlns="http://www.w3.org/2000/svg" height="32px" width="42px" viewBox="0 -960 960 960" fill="#fff">
+        <g transform="scale(-1, 1) translate(-960, 0)">
+            <path d="M180-390v-0h450v60H180Zm0-190v-40h600v60H180Z"/>
+        </g>
+    </svg>
+    <div class="profile">
+        <h1>IN</h1>
+    </div>
+</a>
+
+                
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+       <!----> <div class="hero-text">
+            <h1>Don't settle for ordinary.</h1>
+            <p>Easily manage your studies anywhere.</p>
+        </div>
+
+        <div class="card-grid">
+            <div class="card yellow">
+                <div>
+                    <h2>HUMAN COMPUTER INTERACTION II</h2>
+                    <p>HCI</p>
+                </div>
+                <button class="launch-btn">View Module</button>
+            </div>
+            <div class="card blue">
+                <div>
+                    <h2>DEVELOPMENT SOFTWARE II</h2>
+                    <p>DES</p>
+                </div>
+                <button class="launch-btn">View Module</button>
+            </div>
+            <div class="card dark-blue">
+                <div>
+                    <h2>TECNICAL PROGRAMMING I</h2>
+                    <p>TEP</p>
+                </div>
+                <button class="launch-btn">View Module</button>
+            </div>
+            <div class="card purple">
+                <div>
+                    <h2>INFORMATION SYSTEMS II</h2>
+                    <p>INF</p>
+                </div>
+                <button class="launch-btn">View Module</button>
+            </div>
+        </div>
+
+<div id="overlay" class="overlay">
+    <div class="overlay-content">
+        <span class="close-btn"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></span>
+        <h2 id="overlay-title"></h2>
+        <p id="overlay-code"></p>
+        <p id="overlay-description" style="margin-top: 10px; "></p>
+    </div>
+</div>
+
+
+    </main>
+
+    <footer class="container">
+        <div class="footer-content">
+
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const cards = document.querySelectorAll('.card');
+        const overlay = document.getElementById('overlay');
+        const closeBtn = document.querySelector('.close-btn');
+        const overlayTitle = document.getElementById('overlay-title');
+        const overlayCode = document.getElementById('overlay-code');
+        const overlayDescription = document.getElementById('overlay-description');
+
+        // Descriptions based on title
+        const descriptions = {
+            "HUMAN COMPUTER INTERACTION II": "This module focuses on designing intuitive interfaces and understanding user behavior.",
+            "DEVELOPMENT SOFTWARE II": "Covers advanced techniques in software development and agile methodologies.",
+            "TECNICAL PROGRAMMING I": "Introduces low-level programming, data structures, and debugging strategies.",
+            "INFORMATION SYSTEMS II": "Explores enterprise systems, database integration, and business process modeling."
+        };
+
+        cards.forEach(card => {
+            card.addEventListener('click', function () {
+                const title = card.querySelector('h2').textContent.trim();
+                const code = card.querySelector('p').textContent.trim();
+                const description = descriptions[title] || "No description available.";
+
+                overlayTitle.textContent = title;
+                overlayCode.textContent = code;
+                overlayDescription.textContent = description;
+
+                overlay.style.display = 'flex';
+            });
+        });
+
+        closeBtn.addEventListener('click', function () {
+            overlay.style.display = 'none';
+        });
+
+        overlay.addEventListener('click', function (e) {
+            if (e.target === overlay) {
+                overlay.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<!-- ScrollSmoother requires ScrollTrigger -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
