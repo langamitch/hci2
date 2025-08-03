@@ -324,7 +324,17 @@
             opacity: 0;
             visibility: hidden;
         }
-        
+        /* Add to your Sidebar Styles section */
+.sidebar-close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    cursor: pointer;
+    /* Initially hidden for animation */
+    opacity: 0;
+    visibility: hidden;
+}
+
     </style>
 </head>
 <body>
@@ -451,68 +461,82 @@
         });
     });
 </script>
-  <aside class="sidebar">
-        <div class="sidebar-header">Menu</div>
-        <nav class="sidebar-nav">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Courses</a></li>
-                <li><a href="#">Grades</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="#">Logout</a></li>
-            </ul>
-        </nav>
-    </aside>
+ <aside class="sidebar">
+    <a href="#" class="sidebar-close-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff">
+            <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+        </svg>
+    </a>
+    <div class="sidebar-header">Menu</div>
+    <nav class="sidebar-nav">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Courses</a></li>
+            <li><a href="#">Grades</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </nav>
+</aside>
+
 
     <div class="page-overlay"></div>
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const menuToggle = document.getElementById("menu-toggle");
-            const sidebar = document.querySelector(".sidebar");
-            const overlay = document.querySelector(".page-overlay");
-            const navLinks = document.querySelectorAll(".sidebar-nav a");
+ <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const menuToggle = document.getElementById("menu-toggle");
+        const sidebar = document.querySelector(".sidebar");
+        const overlay = document.querySelector(".page-overlay");
+        const navLinks = document.querySelectorAll(".sidebar-nav a");
+        const closeBtn = document.querySelector(".sidebar-close-btn"); // Get the close button
 
-            // --- GSAP Animation Timeline ---
-            const tl = gsap.timeline({ paused: true });
+        // --- GSAP Animation Timeline ---
+        const tl = gsap.timeline({ paused: true });
 
-            tl.to(sidebar, {
-                x: 0, // Move sidebar to its original position
-                visibility: "visible",
-                duration: 0.5,
-                ease: "power3.inOut"
-            })
-            .to(overlay, {
-                opacity: 1,
-                visibility: "visible",
-                duration: 0.3
-            }, "<") // "<" starts this animation at the same time as the previous one
-            .to(navLinks, {
-                opacity: 1,
-                y: 0,
-                stagger: 0.1, // Animate links one after another
-                duration: 0.4,
-                ease: "power2.out"
-            }, "-=0.3"); // "-=0.3" overlaps this animation with the end of the previous one
+        tl.to(sidebar, {
+            x: 0,
+            visibility: "visible",
+            duration: 0.5,
+            ease: "power3.inOut"
+        })
+        .to(overlay, {
+            opacity: 1,
+            visibility: "visible",
+            duration: 0.3
+        }, "<")
+        .to(navLinks, {
+            opacity: 1,
+            y: 0,
+            stagger: 0.1,
+            duration: 0.4,
+            ease: "power2.out"
+        }, "-=0.4")
+        // Animate the close button to fade in
+        .to(closeBtn, {
+            opacity: 1,
+            visibility: 'visible',
+            duration: 0.3
+        }, "-=0.3");
 
-            // --- Event Listeners ---
-            let menuOpen = false;
+        // --- Event Listeners ---
+        let menuOpen = false;
 
-            const toggleMenu = (e) => {
-                if (e) e.preventDefault();
-                menuOpen = !menuOpen;
-                if (menuOpen) {
-                    tl.play();
-                } else {
-                    tl.reverse();
-                }
-            };
+        const toggleMenu = (e) => {
+            if (e) e.preventDefault();
+            menuOpen = !menuOpen;
+            if (menuOpen) {
+                tl.play();
+            } else {
+                tl.reverse();
+            }
+        };
 
-            menuToggle.addEventListener("click", toggleMenu);
-            overlay.addEventListener("click", toggleMenu);
-        });
-    </script>
+        menuToggle.addEventListener("click", toggleMenu);
+        overlay.addEventListener("click", toggleMenu);
+        closeBtn.addEventListener("click", toggleMenu); // Add listener to the close button
+    });
+</script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 
