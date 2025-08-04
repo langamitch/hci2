@@ -36,33 +36,67 @@
 
     <main class="container">
        <!----> <div class="hero-text">
-            <h1 >Don't settle for ordinary.</h1>
+            <h1>Don't settle for ordinary.</h1>
             <p>Easily manage your studies anywhere.</p>
         </div>
 
-       <a href="New folder/lecturec.html"><div class="card-grid">
+        <div class="card-grid">
             <div class="card yellow">
                 <div>
-                    <h2>LECTURE APP</h2>
-                    <p>Easil manage your classes.</p>
+                    <h2>HUMAN COMPUTER INTERACTION II</h2>
+                    <p>HCI</p>
                 </div>
                 <button class="launch-btn">View Module</button>
-            </div></a> 
-           <a href="New folder/adminc.html"><div class="card blue">
+            </div>
+            <div class="card blue">
                 <div>
-                    <h2>AADMIN APP</h2>
-                    <p>Take control of your stuff and students.</p>
+                    <h2>DEVELOPMENT SOFTWARE II</h2>
+                    <p>DES</p>
                 </div>
                 <button class="launch-btn">View Module</button>
-            </div></a> 
-           <a href="New folder/studentc.html" <div class="card dark-blue">
+            </div>
+            <div class="card dark-blue">
                 <div>
-                    <h2>STUDENT APP</h2>
-                    <p>Manage your studies here</p>
+                    <h2>TECNICAL PROGRAMMING I</h2>
+                    <p>TEP</p>
                 </div>
                 <button class="launch-btn">View Module</button>
-            </div>></a>
-
+            </div>
+            <div class="card purple">
+                <div>
+                    <h2>INFORMATION SYSTEMS II</h2>
+                    <p>INF</p>
+                </div>
+                <button class="launch-btn">View Module</button>
+            </div>
+            <div class="card sage">
+                <div>
+                    <h2>SYSTEM SOFTWARE I</h2>
+                    <p>SS</p>
+                </div>
+                <button class="launch-btn">View Module</button>
+            </div>
+            <div class="card lavender">
+                <div>
+                    <h2>INFORMATION TECNOLOGY SKILLS I</h2>
+                    <p>ITS</p>
+                </div>
+                <button class="launch-btn">View Module</button>
+            </div>
+            <div class="card sky ">
+                <div>
+                    <h2>DEVELOPMENT SOFTWARE I</h2>
+                    <p>DEV</p>
+                </div>
+                <button class="launch-btn">View Module</button>
+            </div>
+            <div class="card grey">
+                <div>
+                    <h2>INFORMATION SYSTEMS I</h2>
+                    <p>INF</p>
+                </div>
+                <button class="launch-btn">View Module</button>
+            </div>
         </div>
 
 <div id="overlay" class="overlay">
@@ -70,7 +104,24 @@
         <span class="close-btn"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></span>
         <h2 id="overlay-title"></h2>
         <p id="overlay-code"></p>
-        <p id="overlay-description" style="margin-top: 10px; "></p>
+        <p id="overlay-description" ></p>
+
+        <div class="stats-container" >
+                <div class="stat-item">
+          <div  class="stat-number">70</div>
+          <div class="stat-label">Students </div>
+        </div>
+        <div class="stat-item">
+          <div  class="stat-number">21</div>
+          <div class="stat-label">Total classes Conducted</div>
+        </div>
+        <div class="stat-item">
+          <div  class="stat-number">54%</div>
+          <div class="stat-label">Yesterdays attendance</div>
+        </div>
+
+      </div>
+
     </div>
 </div>
 
@@ -92,9 +143,9 @@
   <button class="close-btn" id="closeSidebar" aria-label="Close Sidebar"><svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#e3e3e3"><path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z"/></svg></button>
   
   <ul>
-    <li><a href="#" style="color: white;">Index</a></li>
-    <li><a href="#" style="color: white;">Settings</a></li>
-    <li><a href="#" style="color: white;">Logout</a></li>
+    <li><a href="/index.html" >Index</a></li>
+    <li><a href="#" >Settings</a></li>
+    <li><a href="#" >Logout</a></li>
     
   </ul>
 </div>
@@ -131,17 +182,23 @@ closeButton.addEventListener('click', () => {
         const overlayDescription = document.getElementById('overlay-description');
 
         const descriptions = {
-            "HUMAN COMPUTER INTERACTION II": "This module focuses on designing intuitive interfaces and understanding user behavior.",
-            "DEVELOPMENT SOFTWARE II": "Covers advanced techniques in software development and agile methodologies.",
-            "TECNICAL PROGRAMMING I": "Introduces low-level programming, data structures, and debugging strategies.",
-            "INFORMATION SYSTEMS II": "Explores enterprise systems, database integration, and business process modeling."
+            //"HUMAN COMPUTER INTERACTION II": "This module focuses on designing intuitive interfaces and understanding user behavior.",
+           // "DEVELOPMENT SOFTWARE II": "Covers advanced techniques in software development and agile methodologies.",
+           // "INFORMATION SYSTEMS I": "Introduces low-level programming, data structures, and debugging strategies.",
+           // "DEVELOPMENT SOFTWARE I": "Introduces low-level programming, data structures, and debugging strategies.",
+           // "INFORMATION TECHNOLOGY SKILLS I": "information skills.",
+           // "SYSTEM SOFTWARE I": "Introduces computers..",
+           // "TECNICAL PROGRAMMING I": "Introduces low-level programming, data structures, and debugging strategies.",
+           // "INFORMATION SYSTEMS II": "IS"
+           
+
         };
 
         cards.forEach(card => {
             card.addEventListener('click', function () {
                 const title = card.querySelector('h2').textContent.trim();
                 const code = card.querySelector('p').textContent.trim();
-                const description = descriptions[title] || "No description available.";
+                const description = descriptions[title] || "";
 
                 overlayTitle.textContent = title;
                 overlayCode.textContent = code;
