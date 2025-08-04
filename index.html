@@ -140,8 +140,7 @@ closeButton.addEventListener('click', () => {
                 const code = card.querySelector('p').textContent.trim();
                 const description = descriptions[title] || "Loading...";
 
-                overlayTitle.textContent = title;
-                overlayCode.textContent = code;
+               
                 overlayDescription.textContent = description;
                 cardOverlay.style.display = 'flex';
             });
