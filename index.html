@@ -3,339 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Creative Lab</title>
+    <title>Edutend - Module Management</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        /* 1. Global Styles & Variables */
-        :root {
-            --bg-color: #111010;
-            --text-color: #e8eaed;
-            --text-color-secondary: #bdc1c6;
-            --card-yellow: #fdd663;
-            --card-blue: #5c9ce5;
-            --card-dark-blue: #344154;
-            --card-purple: #c5a5e8;
-            --card-text-color: #202124;
-        }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Google Sans', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        a {
-            color: var(--text-color-secondary);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* 2. Main Layout Container */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-        
-        main.container {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        /* 3. Header Styling */
-        header {
-            padding: 24px 0;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .nav-left {
-            font-size: 1.2rem;
-            font-weight: 500;
-        }
-        
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .sign-in-btn {
-            background-color: #8ab4f8;
-            color: #202124;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 0.9rem;
-            text-decoration: none;
-        }
-        
-        .sign-in-btn:hover {
-            background-color: #a3c5f9;
-        }
-
-        /* 4. Hero Section Typography */
-        .hero-text {
-            margin-bottom: 48px;
-        }
-
-        .hero-text h1 {
-            font-size: 5rem;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 8px;
-        }
-
-        .hero-text p {
-            font-size: 2.5rem;
-            font-weight: 400;
-            color: var(--text-color-secondary);
-        }
-
-        /* 5. Card Grid */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            width: 100%;
-        }
-
-        .card {
-            padding: 24px;
-            border-radius: 6px;
-            text-align: left;
-            color: var(--card-text-color);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 250px;
-            transition: transform 0.2s ease-in-out;
-        }
-
-        .card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-        }
-
-        .card h2 {
-            font-size: 2rem;
-            font-weight: 500;
-        }
-        
-        .card p {
-            margin-top: 8px;
-            font-size: 1rem;
-        }
-
-        .launch-btn {
-            background-color: rgba(0, 0, 0, 0.1);
-            color: var(--card-text-color);
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            padding: 10px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 500;
-            align-self: flex-start;
-            margin-top: 24px;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .launch-btn:hover {
-            background-color: rgba(0, 0, 0, 0.2);
-        }
-        
-        /* Individual Card Colors & Styles */
-        .card.yellow { background-color: var(--card-yellow); }
-        .card.blue { background-color: var(--card-blue); }
-        .card.dark-blue {
-            background-color: var(--card-dark-blue);
-            color: var(--text-color);
-          
-            background-position: 110% -20px;
-        }
-        .card.dark-blue .launch-btn {
-            color: var(--text-color);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-        .card.purple { background-color: var(--card-purple); }
-
-
-        /* 6. Footer Styling */
-        footer {
-            padding: 24px 0;
-            margin-top: 88px;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.9rem;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 24px;
-        }
-        
-        /* 7. Responsive Design for smaller screens */
-        @media (max-width: 992px) {
-            .hero-text h1 { font-size: 3rem; }
-            .hero-text p { font-size: 1.5rem; }
-            .card-grid { grid-template-columns: 1fr; }
-        }
-        
-        @media (max-width: 768px) {
-            .sidebar { width: 100vw:}
-            nav { flex-direction: row; gap: 16px; margin-bottom: 70px;position: fixed; justify-content: space-between;width: 90vw; }
-            .hero-text h1 { font-size: 2.5rem;margin-top: 60px; }
-            .hero-text p { font-size: 1.25rem; }
-            .footer-content { flex-direction: column; gap: 16px; }
-        }
-        /* Overlay styles */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.7);
-    backdrop-filter: blur(10px);
-    display: none; /* Hidden by default */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.overlay-content {
-    background: white;
-    padding: 30px;
-    color: black;
-    border-radius: 6px;
-    text-align: center;
-    max-width: 500px;
-    width: 95%;
-
-}
-
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 30px;
-    color: white;
-    cursor: pointer;
-}
-.profile{
-    display: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: white;
-    justify-content: center;
-    text-align: center;
-    align-content: center;
-}
-.profile h1{
-    font-size: 13px;
-}
-/* Sidebar Styles */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100vh;
-            width: 280px;
-            background-color: #000;
-            color: #fff;
-            z-index: 1000;
-            /* Initially hidden off-screen */
-            transform: translateX(-100%);
-            visibility: hidden;
-        }
-
-        .sidebar-header {
-            display: none;
-            padding: 1.5rem;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            
-        }
-        
-        .sidebar-nav ul {
-            list-style: none;
-            padding-top: 1rem;
-        }
-
-        .sidebar-nav a {
-            display: block;
-            padding: 1rem 1.5rem;
-            color: #e0e0e0;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: background-color 0.3s, color 0.3s;
-            /* Initial state for GSAP animation */
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .sidebar-nav a:hover {
-            background-color: #3a3a3a;
-            color: #fff;
-        }
-
-        /* Page Overlay */
-        .page-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            /* Initially hidden */
-            opacity: 0;
-            visibility: hidden;
-        }
-        /* Add to your Sidebar Styles section */
-.sidebar-close-btn {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    cursor: pointer;
-    /* Initially hidden for animation */
-    opacity: 0;
-    visibility: hidden;
-}
-
-    </style>
 </head>
 <body>
 
@@ -345,7 +18,7 @@
                 <strong>EDUTEND</strong>
             </div>
             <div class="nav-right">
-        <a href="#" id="menu-toggle">
+        <a href="#" class="toggle" id="menu-toggle">
             <svg xmlns="http://www.w3.org/2000/svg" height="32px" width="42px" viewBox="0 -960 960 960" fill="#fff">
                 <g transform="scale(-1, 1) translate(-960, 0)">
                     <path d="M180-390v-0h450v60H180Zm0-190v-40h600v60H180Z"/>
@@ -420,26 +93,35 @@
         </div>
     </footer>
 
- <aside class="sidebar">
-    <a href="#" class="sidebar-close-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff">
-            <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
-        </svg>
-    </a>
-    <div class="sidebar-header">Menu</div>
-    <nav class="sidebar-nav">
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Courses</a></li>
-            <li><a href="#">Grades</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Logout</a></li>
-        </ul>
-    </nav>
-</aside>
+    <!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+  <button class="close-btn" id="closeSidebar" aria-label="Close Sidebar"><svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#e3e3e3"><path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z"/></svg></button>
+  
+  <ul>
+    <li><a href="#" style="color: white;">Index</a></li>
+    <li><a href="#" style="color: white;">Settings</a></li>
+    <li><a href="#" style="color: white;">Logout</a></li>
+    
+  </ul>
+</div>
+
+   <!-- JavaScript for toggle -->
+  <script>
+const toggleButton = document.querySelector('.toggle');
+const sidebar = document.getElementById('sidebar');
+const closeButton = document.getElementById('closeSidebar');
+
+toggleButton.addEventListener('click', () => {
+  sidebar.classList.add('open');
+});
+
+closeButton.addEventListener('click', () => {
+  sidebar.classList.remove('open');
+});
+
+  </script>
 
 
-    <div class="page-overlay"></div>
 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
@@ -486,33 +168,6 @@
         });
 
 
-        // --- Sidebar Animation Logic ---
-        const menuToggle = document.getElementById("menu-toggle");
-        const sidebar = document.querySelector(".sidebar");
-        const pageOverlay = document.querySelector(".page-overlay"); // Targets the correct overlay
-        const navLinks = document.querySelectorAll(".sidebar-nav a");
-        const sidebarCloseBtn = document.querySelector(".sidebar-close-btn");
-
-        const tl = gsap.timeline({ paused: true });
-
-        tl.to(sidebar, { x: 0, visibility: "visible", duration: 0.5, ease: "power3.inOut" })
-          .to(pageOverlay, { opacity: 1, visibility: "visible", duration: 0.3 }, "<")
-          .to(navLinks, { opacity: 1, y: 0, stagger: 0.1, duration: 0.4, ease: "power2.out" }, "-=0.4")
-          .to(sidebarCloseBtn, { opacity: 1, visibility: 'visible', duration: 0.3 }, "-=0.3");
-
-        const toggleMenu = (e) => {
-            e.preventDefault();
-            // The .reversed() method is a reliable way to check the timeline's state
-            if (tl.reversed()) {
-                tl.play();
-            } else {
-                tl.reverse();
-            }
-        };
-
-        menuToggle.addEventListener("click", toggleMenu);
-        pageOverlay.addEventListener("click", toggleMenu);
-        sidebarCloseBtn.addEventListener("click", toggleMenu);
     });
 </script>
 
