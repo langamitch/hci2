@@ -68,9 +68,7 @@
 <div id="overlay" class="overlay">
     <div class="overlay-content">
         <span class="close-btn"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></span>
-        <h2 id="overlay-title"></h2>
-        <p id="overlay-code"></p>
-        <p id="overlay-description" style="margin-top: 10px; "></p>
+
     </div>
 </div>
 
@@ -131,17 +129,14 @@ closeButton.addEventListener('click', () => {
         const overlayDescription = document.getElementById('overlay-description');
 
         const descriptions = {
-            "HUMAN COMPUTER INTERACTION II": "This module focuses on designing intuitive interfaces and understanding user behavior.",
-            "DEVELOPMENT SOFTWARE II": "Covers advanced techniques in software development and agile methodologies.",
-            "TECNICAL PROGRAMMING I": "Introduces low-level programming, data structures, and debugging strategies.",
-            "INFORMATION SYSTEMS II": "Explores enterprise systems, database integration, and business process modeling."
+
         };
 
         cards.forEach(card => {
             card.addEventListener('click', function () {
                 const title = card.querySelector('h2').textContent.trim();
                 const code = card.querySelector('p').textContent.trim();
-                const description = descriptions[title] || "No description available.";
+                const description = descriptions[title] || "Loading...";
 
                 overlayTitle.textContent = title;
                 overlayCode.textContent = code;
