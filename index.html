@@ -68,7 +68,7 @@
 <div id="overlay" class="overlay">
     <div class="overlay-content" style="width: fit-content;">
      
-        <img src="Rounded blocks.gif" alt="" style="width: 30px; height: 30px;">
+        <img class="img" src="Rounded blocks.gif" alt="" style="width: 30px; height: 30px;">
        
     </div>
 </div>
@@ -136,7 +136,7 @@ closeButton.addEventListener('click', () => {
         cards.forEach(card => {
             card.addEventListener('click', function () {
                 const title = card.querySelector('h2').textContent.trim();
-                const code = card.querySelector('p').textContent.trim();
+                const code = card.querySelector('img');
                 const description = descriptions[title] || "Loading...";
 
                
