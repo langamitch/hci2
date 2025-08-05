@@ -147,7 +147,14 @@
             font-size: 1rem;
         }
 
-        .launch-btn {
+        .btn-container{
+            display: flex;
+            gap: 20px;
+        }
+
+        .card button {
+
+            display: flex;
             background-color: rgba(0, 0, 0, 0.1);
             color: var(--card-text-color);
             border: 1px solid rgba(0, 0, 0, 0.2);
@@ -155,9 +162,9 @@
             border-radius: 8px;
             cursor: pointer;
             font-weight: 500;
-            align-self: flex-start;
+            width: fit-content;
             margin-top: 24px;
-            display: inline-flex;
+            display: flex;
             align-items: center;
         }
 
