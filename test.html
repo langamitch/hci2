@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+        }
+
+        
+    .form-section {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input, select {
+      padding: 8px;
+      width: 100%;
+    }
+    .student-entry {
+      margin-bottom: 15px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+    }
+    .btnCreate {
+      margin-top: 20px;
+      padding: 10px 15px;
+    }
+    </style>
+</head>
+<body>
+ <form id="register-form">
+    <div class="form-section">
+      <label for="lecturer-name">Lecturer Name:</label>
+      <input type="text" id="lecturer-name" name="lecturerName" required>
+
+      <label for="course-title">Course Title:</label>
+      <input type="text" id="course-title" name="courseTitle" required>
+
+      <label for="class-date">Class Date:</label>
+      <input type="date" id="class-date" name="classDate" required>
+    </div>
+
+    <div class="form-section">
+      <h3>Student List</h3>
+      <div id="students-container">
+        <div class="student-entry">
+          <label>Student Name:</label>
+          <input type="text" name="studentNames[]" required>
+        </div>
+      </div>
+
+    </div>
+
+    <button type="submit" class="btnCreate">Create Register</button>
+  </form>
+</div>
+</body>
+</html>

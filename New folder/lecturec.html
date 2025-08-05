@@ -54,7 +54,7 @@
           </div>
           <div class="btn-container">
             <button class="launch-btn">Details</button>
-          <button class="sign">Create class</button>
+          <button class=" create-class-btn sign">Create class</button>
           </div>
         </div>
         <div class="card blue">
@@ -64,7 +64,7 @@
           </div>
           <div class="btn-container">
             <button class="launch-btn">Details</button>
-          <button class="sign">Create class</button>
+          <button class=" create-class-btn sign">Create class</button>
           </div>
         </div>
         <div class="card dark-blue">
@@ -74,7 +74,7 @@
           </div>
           <div class="btn-container">
             <button class="launch-btn">Details</button>
-          <button class="sign">Create class</button>
+          <button class="create-class-btn sign">Create class</button>
           </div>
         </div>
         <div class="card purple">
@@ -84,7 +84,7 @@
           </div>
           <div class="btn-container">
             <button class="launch-btn">Details</button>
-          <button class="sign">Create class</button>
+          <button class="create-class-btn sign">Create class</button>
           </div>
         </div>
         <div class="card sage">
@@ -94,7 +94,7 @@
           </div>
           <div class="btn-container">
             <button class="launch-btn">Details</button>
-          <button class="sign">Create class</button>
+          <button class="create-class-btn sign">Create class</button>
           </div>
         </div>
         <div class="card lavender">
@@ -104,7 +104,7 @@
           </div>
           <div class="btn-container">
             <button class="launch-btn">Details</button>
-          <button class="sign">Create class</button>
+          <button class="create-class-btn sign">Create class</button>
           </div>
         </div>
         <div class="card sky">
@@ -114,7 +114,7 @@
           </div>
           <div class="btn-container">
             <button class="launch-btn">Details</button>
-          <button class="sign">Create class</button>
+          <button class="create-class-btn sign">Create class</button>
           </div>
           
         </div>
@@ -125,10 +125,22 @@
           </div>
           <div class="btn-container">
             <button class="launch-btn">Details</button>
-          <button class="sign">Create class</button>
+          <button class="create-class-btn sign">Create class</button>
           </div>
         </div>
       </div>
+
+      <div id="qrOverlay" class="qr-overlay">
+    <div class="qr-overlay-content">
+      <span class="qr-close-btn" onclick="closeQrOverlay()">&times;</span>
+      <h2>Create Class Register</h2>
+
+      <button class="generate-qr-btn" onclick="generateQrCode()">Generate QR Code</button>
+
+      <div id="qr-pin"></div>
+      <div id="qr-code"></div>
+    </div>
+  </div>
 
       <div id="overlay" class="overlay">
         <div class="overlay-content">
@@ -165,6 +177,11 @@
         </div>
       </div>
     </main>
+
+      <!-- QRCode.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+
+
 
     <footer class="container">
       <div class="footer-content">

@@ -311,3 +311,60 @@
       text-decoration: none;
     }
 
+
+    .qr-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.75);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .qr-overlay-content {
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      width: 400px;
+      text-align: center;
+      position: relative;
+    }
+
+    .qr-close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: bold;
+      color: #999;
+    }
+
+    .qr-close-btn:hover {
+      color: #000;
+    }
+
+    .generate-qr-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #22c55e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #qr-pin {
+      margin-top: 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    #qr-code {
+      margin-top: 20px;
+    }

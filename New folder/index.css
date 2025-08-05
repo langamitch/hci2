@@ -13,6 +13,7 @@
             --card-dark-blue: #1F4E79;
             --card-purple: #c5a5e8;
             --card-text-color: #202124;
+            --card-rich-black: #101820;
         }
 
         * {
@@ -365,3 +366,67 @@
       color: white;
     }
 
+    
+
+    .qr-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      color: #000;
+      background: rgba(0, 0, 0, 0.75);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .qr-overlay-content {
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      width: 400px;
+      text-align: center;
+      justify-self: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .qr-close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: bold;
+      color: #999;
+    }
+
+    .qr-close-btn:hover {
+      color: #000;
+    }
+
+    .generate-qr-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 13px;
+      background-color: var(--card-rich-black);
+      color: rgb(255, 255, 255);
+      border: none;
+      font-weight: 500;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #qr-pin {
+      margin-top: 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    #qr-code {
+        align-items: center;
+        justify-self: center;
+      margin-top: 20px;
+    }
