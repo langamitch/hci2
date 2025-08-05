@@ -430,3 +430,9 @@
         justify-self: center;
       margin-top: 20px;
     }
+    #qr-code img {
+
+        align-items: center;
+        justify-self: center;
+
+    }
