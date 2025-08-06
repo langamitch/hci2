@@ -211,7 +211,7 @@
         
         /* 7. Responsive Design for smaller screens */
         @media (max-width: 992px) {
-            
+            .qr-overlay-content { width: 90%;}
             .hero-text h1 { font-size: 3rem; }
             .hero-text p { font-size: 1.5rem; }
             .card-grid { grid-template-columns: repeat(2, 1fr); }
@@ -227,7 +227,7 @@
 
     
 }
-           
+           .qr-overlay-content { width: 90%;}
             nav { flex-direction: row; gap: 16px; margin-bottom: 70px;position: fixed; justify-content: space-between;width: 90vw; }
             .hero-text h1 { font-size: 2.5rem;margin-top: 60px; }
             .hero-text p { font-size: 1.25rem; }
@@ -436,3 +436,44 @@
         justify-self: center;
 
     }
+
+
+        /* QR Code and PIN Display */
+        #qr-display-area {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+
+        #qrcode {
+            margin: 20px auto;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #pin-display {
+            font-size: 28px;
+            font-weight: bold;
+            color: #dc3545;
+            margin-top: 10px;
+        }
+        
+        #timer-display {
+            font-size: 16px;
+            color: #6c757d;
+            margin-top: 10px;
+        }
+                .overlay-content input {
+            width: calc(100% - 24px);
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }

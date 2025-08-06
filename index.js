@@ -52,38 +52,40 @@
   });
 
 
+  const openBtns = document.querySelectorAll(".create-class-btn");
+  const overlay = document.getElementById('qrOverlay');
+  const qrPinContainer = document.getElementById('qr-pin');
+  const qrCodeContainer = document.getElementById('qr-code');
 
-    const openBtn = document.querySelector(".create-class-btn");
-    const overlay = document.getElementById('qrOverlay');
-    const qrPinContainer = document.getElementById('qr-pin');
-    const qrCodeContainer = document.getElementById('qr-code');
+  function generateRandomPin() {
+    return Math.floor(100000 + Math.random() * 900000); // 6-digit PIN
+  }
 
-    function generateRandomPin() {
-      return Math.floor(100000 + Math.random() * 900000); // 6-digit PIN
-    }
+  function generateQrCode() {
+    // Clear previous QR code
+    qrCodeContainer.innerHTML = '';
 
-    function generateQrCode() {
-      // Clear previous QR code
-      qrCodeContainer.innerHTML = '';
+    const pin = generateRandomPin();
+    qrPinContainer.innerText = `PIN: ${pin}`;
 
-      const pin = generateRandomPin();
-      qrPinContainer.innerText = `PIN: ${pin}`;
+    const qrUrl = `https://yourdomain.com/checkin?pin=${pin}`;
+    new QRCode(qrCodeContainer, {
+      text: qrUrl,
+      width: 200,
+      height: 200
+    });
+  }
 
-      const qrUrl = `https://yourdomain.com/checkin?pin=${pin}`;
-      new QRCode(qrCodeContainer, {
-        text: qrUrl,
-        width: 200,
-        height: 200
-      });
-    }
-
-    openBtn.addEventListener('click', () => {
+  openBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      generateQrCode();
       overlay.style.display = 'flex';
     });
+  });
 
-    function closeQrOverlay() {
-      overlay.style.display = 'none';
-      qrPinContainer.innerText = '';
-      qrCodeContainer.innerHTML = '';
-    }
-  
+  function closeQrOverlay() {
+    overlay.style.display = 'none';
+    qrPinContainer.innerText = '';
+    qrCodeContainer.innerHTML = '';
+  }
+

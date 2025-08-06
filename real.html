@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Attendance Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Button Styles */
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+        
+        .btn-success {
+            background-color: #28a745;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        /* Overlay Styles */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .overlay-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .overlay-content h2 {
+            margin-top: 0;
+            color: #007bff;
+        }
+        
+        .overlay-content input {
+            width: calc(100% - 24px);
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-btn:hover {
+            color: #333;
+        }
+
+        /* QR Code and PIN Display */
+        #qr-display-area {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+
+        #qrcode {
+            margin: 20px auto;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #pin-display {
+            font-size: 28px;
+            font-weight: bold;
+            color: #dc3545;
+            margin-top: 10px;
+        }
+        
+        #timer-display {
+            font-size: 16px;
+            color: #6c757d;
+            margin-top: 10px;
+        }
+
+        /* Submissions Table */
+        #submissions-container {
+            width: 90%;
+            max-width: 1000px;
+            margin-top: 30px;
+        }
+
+        #submissions-container h2 {
+            color: #007bff;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #e9ecef;
+        }
+        
+        /* Previous Submissions */
+        #prev-submissions-container {
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Attendance Tracker</h1>
+
+    <div id="main-buttons">
+        <button class="btn" id="create-btn">Create Session</button>
+        <button class="btn btn-secondary" id="submit-btn">Submit Attendance</button>
+    </div>
+
+    <!-- Create Session Overlay -->
+    <div id="create-overlay" class="overlay">
+        <div class="overlay-content">
+            <span class="close-btn" onclick="closeOverlay('create-overlay')">&times;</span>
+            <h2>Create New Attendance Session</h2>
+            <button class="btn" id="generate-qr-btn">Generate PIN & QR Code</button>
+            <div>
+                <p>Set Expiration Time:</p>
+                <button class="btn btn-secondary" onclick="setTimer(5)">5 min</button>
+                <button class="btn btn-secondary" onclick="setTimer(10)">10 min</button>
+                <button class="btn btn-secondary" onclick="setTimer(15)">15 min</button>
+            </div>
+            <div id="qr-display-area" style="display: none;">
+                <div id="qrcode"></div>
+                <p id="pin-display"></p>
+                <p id="timer-display"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submit Attendance Overlay -->
+    <div id="submit-overlay" class="overlay">
+        <div class="overlay-content">
+            <span class="close-btn" onclick="closeOverlay('submit-overlay')">&times;</span>
+            <h2>Submit Your Attendance</h2>
+            <input type="text" id="student-name" placeholder="Enter your name">
+            <input type="text" id="student-number" placeholder="Enter your student number">
+            
+            <div id="pin-input-area">
+                 <input type="text" id="pin-input" placeholder="Enter Class PIN">
+            </div>
+            <div id="qr-scan-area" style="display: none;">
+                <p>QR Scanner will be here.</p>
+               
+            </div>
+            
+            <button class="btn btn-secondary" id="switch-input-btn">Switch to Scan QR</button>
+            <button class="btn btn-success" id="submit-attendance-btn" >Submit</button>
+        </div>
+    </div>
+    
+    <!-- Submissions Display -->
+    <div id="submissions-container">
+        <h2>Today's Submissions</h2>
+        <table id="submissions-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Student Number</th>
+                    <th>Timestamp</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Submissions will be populated here -->
+            </tbody>
+        </table>
+        <div id="prev-submissions-container">
+            <h3>Previous Submissions</h3>
+            <input type="date" id="date-picker">
+            <button class="btn" id="view-prev-btn">View</button>
+        </div>
+    </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script type="module" src="sub.js"></script>
+
+
+</body>
+</html>

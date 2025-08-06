@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - EdUTEND</title>
+    <link rel="stylesheet" href="style.css">
+</html>
+</head>
+    <div class="sidebar nav">
+        <h2>Student Dashboard - EdUTEND</h2>
+        <nav class="mt-6">
+            <a href="#" class="student-nav-item block px-4 text-gray-700 hover:bg-indigo-50 hover:text-indigo600 rounded" data-target="dashboard">
+                <i class="mr-3 fas fa -tachometer-alt"></i>
+                Dashboard
+            </a>
+            <a href="#" class="student-nav-item block px-4 text-gray-700 hover:bg-indigo-50 hover:text-indigo600 rounded" data-target="profile">
+                <i class="mr-3 fas fa-user"></i>
+                Profile
+            </a>
+            <a href="#" class="student-nav-item block px-4 text-gray-700 hover:bg-indigo-50 hover:text-indigo600 rounded" data-target="calendar">
+                <i class="mr-3 fas fa-calendar"></i>
+                Calendar
+            </a>
+            <a href="#" class="create-class-btn lecturer-nav-item block px-4 text-gray-700 hover:bg-indigo-50 hover:text-indigo600 rounded" data-target="courses">
+                <i class="mr-3 fas fa-book"></i>
+                Courses
+            </a>
+            <a href="#" class="student-nav-item block px-4 text-gray-700 hover:bg-indigo-50 hover:text-indigo600 rounded" data-target="qrcodescanner">
+                <i class="mr-3 fas fa-book"></i>
+                Scanner
+            </a>
+            <a href="#" class="student-nav-item block px-4 text-gray-700 hover:bg-indigo-50 hover:text-indigo600 rounded" data-target="pinenter">
+                <i class="mr-3 fas fa-book"></i>
+                Pin
+            </a>
+            <a href="#" class="student-nav-item block px-4 text-gray-700 hover:bg-indigo-50 hover:text-indigo600 rounded" data-target="attendance">
+                <i class="mr-3 fas fa-check"></i>
+                Attendance
+            </a>
+            <a href="#" class="student-nav-item block px-4 text-gray-700 hover:bg-indigo-50 hover:text-indigo600 rounded" data-target="reports">
+                <i class="mr-3 fas fa -tachometer-alt"></i>
+                Reports
+            </a>
+            <a href="#" class="student-nav-item block px-4 text-gray-700 hover:bg-indigo-50 hover:text-indigo600 rounded" data-target="settings">
+                <i class="mr-3 fas fa-cog"></i>
+                Settings
+            </a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <header>
+        <div class="user-info">
+            <span>Welcome, Student</span>
+        </div>
+        <div class="header-actions">
+        </div>
+    </header>
+
+    <button class="gen">generate</button>
+
+    <div id="dashboard-overview" class="section">
+        <h3>Dashboard Overview</h3>
+        <div class="stats-grid">
+            <div class="stat-box">Total Students: <br> <span>8767</span></div>
+            <div class="stat-box">Total Lecturers: <br> <span>4</span></div>
+            <div class="stat-box">Total Courses: <br> <span>4</span></div>
+            <div class="stat-box">
+                Total Attendance: <br> <span>5764</span>
+            </div>
+            <div class="stat-box">Total Users: <br> <span>10675</span></div>
+        </div>
+
+              <div id="qrOverlay" class="qr-overlay">
+    <div class="qr-overlay-content">
+      <span class="qr-close-btn" onclick="closeQrOverlay()">&times;</span>
+      <h2>Create Class Register</h2>
+
+      <button class="generate-qr-btn" onclick="generateQrCode()">Generate QR Code</button>
+
+      <div id="qr-pin"></div>
+      <div id="qr-code"></div>
+    </div>
+  </div>
+
+        <footer>
+            <p>&copy; 2025/26 Code Crafters Edu-Tend System. All rights reserved by Kay-M.</p>
+        </footer>
+
+    <script src="/index.js"></script>
+</body>
+</html>
